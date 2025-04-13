@@ -1,0 +1,49 @@
+### GET all courses
+GET http://localhost:8080/api/students/courses
+
+### GET all students
+GET http://localhost:8080/api/students
+
+### POST create student
+POST http://localhost:8080/api/students
+Content-Type: application/json
+
+{
+  "fullName": "test",
+  "email": "@mail.ru"
+}
+
+### PUT subscribe student to courses
+PUT http://localhost:8080/api/students
+Content-Type: application/json
+
+{
+  "id": "-174331071285075512",
+  "courses": ["C#", "PHP"]
+}
+
+### POST registartion student without courses
+POST http://localhost:8080/api/students/register
+Content-Type: application/json
+
+{
+  "fullName": "test2",
+  "email": "@mail.ru"
+}
+
+### POST continue registartion student
+POST http://localhost:8080/api/students/complete-registration
+Content-Type: application/json
+
+{
+  "courses": ["PHP"]
+}
+
+### POST registartion student without courses
+POST http://localhost:8080/api/students/register?courses=Java&courses=R
+Content-Type: application/json
+
+{
+  "fullName": "test2",
+  "email": "mail2@mail.ru"
+}

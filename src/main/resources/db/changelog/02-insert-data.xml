@@ -1,0 +1,34 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="2" author="patron">
+        <insert tableName="notes">
+            <column name="date_of_update" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="title" value="Order 1"/>
+            <column name="content" value="This is the first note."/>
+        </insert>
+        <insert tableName="notes">
+            <column name="date_of_update" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="title" value="Order 2"/>
+            <column name="content" value="This is the second note."/>
+        </insert>
+        <insert tableName="notes">
+            <column name="date_of_update" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="title" value="Order 3"/>
+            <column name="content" value="This is the third note."/>
+        </insert>
+        <insert tableName="notes">
+            <column name="date_of_update" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="title" value="Order 4"/>
+            <column name="content" value="This is the fourth note."/>
+        </insert>
+        <insert tableName="notes">
+            <column name="date_of_update" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="title" value="Order 5"/>
+            <column name="content" value="This is the fifth note."/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
