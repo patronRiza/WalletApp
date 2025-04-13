@@ -2,33 +2,49 @@
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
-    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
 
     <changeSet id="2" author="patron">
-        <insert tableName="notes">
-            <column name="date_of_update" valueComputed="CURRENT_TIMESTAMP"/>
-            <column name="title" value="Order 1"/>
-            <column name="content" value="This is the first note."/>
+        <comment>Insert sample wallet data</comment>
+        <insert tableName="wallets">
+            <column name="id" value="8a8a8581-8b8b-4f4f-9c9c-1d1d1d1d1d1d"/>
+            <column name="balance" value="1000"/>
         </insert>
-        <insert tableName="notes">
-            <column name="date_of_update" valueComputed="CURRENT_TIMESTAMP"/>
-            <column name="title" value="Order 2"/>
-            <column name="content" value="This is the second note."/>
+        <insert tableName="wallets">
+            <column name="id" value="7b7b7671-7c7c-4e4e-8d8d-2c2c2c2c2c2c"/>
+            <column name="balance" value="2500"/>
         </insert>
-        <insert tableName="notes">
-            <column name="date_of_update" valueComputed="CURRENT_TIMESTAMP"/>
-            <column name="title" value="Order 3"/>
-            <column name="content" value="This is the third note."/>
+        <insert tableName="wallets">
+            <column name="id" value="6c6c6761-6d6d-4d4d-7e7e-3b3b3b3b3b3b"/>
+            <column name="balance" value="500"/>
         </insert>
-        <insert tableName="notes">
-            <column name="date_of_update" valueComputed="CURRENT_TIMESTAMP"/>
-            <column name="title" value="Order 4"/>
-            <column name="content" value="This is the fourth note."/>
+        <insert tableName="wallets">
+            <column name="id" value="5d5d5861-5e5e-4c4c-6f6f-4a4a4a4a4a4a"/>
+            <column name="balance" value="7500"/>
         </insert>
-        <insert tableName="notes">
-            <column name="date_of_update" valueComputed="CURRENT_TIMESTAMP"/>
-            <column name="title" value="Order 5"/>
-            <column name="content" value="This is the fifth note."/>
+        <insert tableName="wallets">
+            <column name="id" value="4e4e4971-4f4f-4b4b-5e5e-595959595959"/>
+            <column name="balance" value="3000"/>
+        </insert>
+        <insert tableName="wallets">
+            <column name="id" value="3f3f3a81-3a3a-4a4a-4d4d-686868686868"/>
+            <column name="balance" value="10000"/>
+        </insert>
+        <insert tableName="wallets">
+            <column name="id" value="2a2a2b91-2b2b-4949-3c3c-777777777777"/>
+            <column name="balance" value="1500"/>
+        </insert>
+        <insert tableName="wallets">
+            <column name="id" value="1b1b1c01-1c1c-4848-2b2b-868686868686"/>
+            <column name="balance" value="6000"/>
+        </insert>
+        <insert tableName="wallets">
+            <column name="id" value="0c0c0d11-0d0d-4747-1a1a-959595959595"/>
+            <column name="balance" value="200"/>
+        </insert>
+        <insert tableName="wallets">
+            <column name="id" value="9d9d9e21-9e9e-4646-0909-a4a4a4a4a4a4"/>
+            <column name="balance" value="4500"/>
         </insert>
     </changeSet>
 </databaseChangeLog>

@@ -1,4 +1,5 @@
 package ru.prj.model.dto.request;
 
-public record OperationRequest() {
-}
+import java.util.UUID;
+
+public record OperationRequest(String walletId, String operationType, Long amount) {}

@@ -1,4 +1,4 @@
-package ru.prj.model.dto.request;
+package ru.prj.model.dto.response;
 
 import ru.prj.model.Wallet;
 

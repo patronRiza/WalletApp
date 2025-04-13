@@ -1,4 +1,4 @@
 package ru.prj.model.dto.response;
 
-public record ResponseOfOperation() {
+public record ResponseOfOperation(String response) {
 }

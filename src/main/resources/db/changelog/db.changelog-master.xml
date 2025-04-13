@@ -3,9 +3,8 @@
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
-        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.8.xsd">
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.8.xsd">
 
     <include file="db/changelog/01-create-table.xml"/>
-    <include file="db/changelog/02-insert-data.xml" context="debug"/>
-
+    <include file="db/changelog/02-insert-data.xml"/>
 </databaseChangeLog>

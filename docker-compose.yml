@@ -1,0 +1,39 @@
+services:
+  db:
+    image: postgres:16
+    container_name: db
+    env_file: ./config/db.env
+    ports:
+      - "5433:5432"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./config/postgres.conf:/etc/postgresql/postgresql.conf
+    networks:
+      - app-network
+
+  app:
+    build:
+      dockerfile: DockerfileSpringBoot
+    ports:
+      - "8080:8080"
+    container_name: app
+    env_file: ./config/app.env
+    volumes:
+      - ./config:/app/config
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
