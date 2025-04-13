@@ -9,7 +9,7 @@ import java.util.UUID;
 public interface IWalletRepository {
     Optional<Wallet> create(Long balance);
     List<Wallet> all();
-    Optional<Wallet> find(UUID id);
-    Optional<Wallet> update(UUID id, Long balance);
+    Optional<Wallet> findWithBlock(UUID id);
+    Boolean update(UUID id, Long balance);
     int delete(UUID id);
 }

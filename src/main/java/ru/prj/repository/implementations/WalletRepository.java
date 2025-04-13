@@ -37,14 +37,14 @@ public class WalletRepository implements IWalletRepository {
     }
 
     @Override
-    public Optional<Wallet> find(UUID id) {
+    public Optional<Wallet> findWithBlock(UUID id) {
         return jdbcTemplate.query(GET_WALLET_BY_ID, walletRowMapper, id).stream().findFirst();
     }
 
     @Override
-    public Optional<Wallet> update(UUID id, Long balance) {
+    public Boolean update(UUID id, Long balance) {
         int update = jdbcTemplate.update(UPDATE_WALLET, balance, id);
-        return (update == 0) ? Optional.empty() : Optional.of(new Wallet(id, balance));
+        return update > 0;
     }
 
     @Override

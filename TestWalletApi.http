@@ -11,5 +11,5 @@ Content-Type: application/json
 {
   "walletId": "9d9d9e21-9e9e-4646-0909-a4a4a4a4a4a4",
   "operationType": "DEPOSIT",
-  "amount": "4500"
+  "amount": 4500
 }

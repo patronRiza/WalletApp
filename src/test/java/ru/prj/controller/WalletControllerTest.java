@@ -37,7 +37,7 @@ class WalletControllerTest {
     @Test
     @DisplayName("Получение баланса кошелька")
     void getBalanceOfWallet() {
-        UUID id = UUID.randomUUID();
+        String id = UUID.randomUUID().toString();
         Long expectedBalance = 100L;
         when(walletService.getBalance(id)).thenReturn(expectedBalance);
 
@@ -61,7 +61,7 @@ class WalletControllerTest {
     @Test
     @DisplayName("Изменение баланса кошелька")
     void changeBalance() {
-        OperationRequest request = new OperationRequest(UUID.randomUUID(), DEPOSIT, 50L);
+        OperationRequest request = new OperationRequest(UUID.randomUUID().toString(), DEPOSIT, 50L);
         when(walletService.operate(request)).thenReturn("Operation Success");
 
         String response = walletController.changeBalance(request).response();

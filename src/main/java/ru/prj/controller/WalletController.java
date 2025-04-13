@@ -3,18 +3,18 @@ package ru.prj.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.*;
 import ru.prj.exceptions.EmptyWalletException;
+import ru.prj.exceptions.InvalidArgumentsInRequest;
 import ru.prj.exceptions.InvalidOperationException;
 import ru.prj.exceptions.WalletCreationException;
-import ru.prj.model.dto.response.ErrorModel;
 import ru.prj.model.dto.request.OperationRequest;
 import ru.prj.model.dto.response.BalanceResponseDTO;
+import ru.prj.model.dto.response.ErrorModel;
 import ru.prj.model.dto.response.ListOfWalletsResponseDTO;
 import ru.prj.model.dto.response.ResponseOfOperation;
 import ru.prj.service.WalletService;
-
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/wallet")
@@ -26,7 +26,7 @@ public class WalletController {
     }
 
     @GetMapping(value = "/{WALLET_UUID}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public BalanceResponseDTO getBalanceOfWallet(@PathVariable("WALLET_UUID") UUID id) {
+    public BalanceResponseDTO getBalanceOfWallet(@PathVariable("WALLET_UUID") String id) {
         return new BalanceResponseDTO(walletService.getBalance(id));
     }
 
@@ -54,6 +54,13 @@ public class WalletController {
                 .body(new ErrorModel(e.getMessage()));
     }
 
+    @ExceptionHandler(InvalidArgumentsInRequest.class)
+    public ResponseEntity<ErrorModel> handleStudentNotExistException(final InvalidArgumentsInRequest e) {
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(new ErrorModel(e.getMessage()));
+    }
+
     @ExceptionHandler(WalletCreationException.class)
     public ResponseEntity<ErrorModel> handleStudentNotExistException(final WalletCreationException e) {
         return ResponseEntity
@@ -66,5 +73,13 @@ public class WalletController {
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
                 .body(new ErrorModel(e.getMessage()));
+    }
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<ErrorModel> handleJsonParseException(HttpMessageNotReadableException e) {
+        String message = "Invalid JSON format: " + e.getCause().getMessage();
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(new ErrorModel(message));
     }
 }
