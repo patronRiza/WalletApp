@@ -1,7 +1,7 @@
 package ru.prj.exceptions;
 
-public class WalletCreationException extends RuntimeException {
-    public WalletCreationException(String message) {
+public class InvalidOperationException extends RuntimeException {
+    public InvalidOperationException(String message) {
         super(message);
     }
 }
